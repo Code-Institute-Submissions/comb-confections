@@ -2,28 +2,31 @@
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Treats
+                Shop
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item">By Rating</a>
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
+                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                 <a href="{% url 'products' %}" class="dropdown-item">All Treats</a>
             </div>
         </li>
+
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Treats
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="treats-link">
+            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
                 <a href="{% url 'products' %}?category=fudge" class="dropdown-item">Fudge</a>
-                <a href="{% url 'products' %}?category=cake" class="dropdown-item">Cakes</a>
+                <a href="{% url 'products' %}?category=cakes" class="dropdown-item">Cakes</a>
                 <a href="{% url 'products' %}?category=sweet_treats" class="dropdown-item">Sweet Treats</a>
                 <a href="{% url 'products' %}?category=fudge,cakes,sweet_treats" class="dropdown-item">All Treats</a>
             </div>
         </li>
 
-        <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="membership-link" aria-haspopup="true" aria-expanded="false">
+
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Join the Hive
             </a>
         </li>
