@@ -6,13 +6,11 @@ class Membership(models.Model):
     Creates a membership model containing details
     of each different membership
     """
-    HIGH = 'High'
-    MEDIUM = 'Med'
-    LOW = 'Low'
-    PRIORITY = [
-        (HIGH, 'High'),
-        (MEDIUM, 'Medium'),
-        (LOW, 'Low'),
+    YES = 'Y'
+    NO = 'N'
+    RECIPE_BOOK = [
+        (YES, 'Yes'),
+        (NO, 'No')
     ]
 
     YES = 'Y'
@@ -31,8 +29,8 @@ class Membership(models.Model):
     overall_discount = models.IntegerField(default=0)
     monthly_treat = models.CharField('Monthly Treat', max_length=50,
                               null=True, blank=True)
-    recipe_book = models.CharField('Recipe Book Included', max_length=50,
-                              null=True, blank=True)
+    recipe_book = models.CharField(max_length=10,
+                                   choices=RECIPE_BOOK, default='N')
     price = models.DecimalField(max_digits=4, decimal_places=2)
 
     def __str__(self):

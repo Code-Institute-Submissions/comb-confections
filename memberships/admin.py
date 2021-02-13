@@ -1,5 +1,5 @@
 from django.contrib import admin
-from memberships.models import Membership
+from .models import Membership
 
 
 @admin.register(Membership)
@@ -8,4 +8,9 @@ class MembershipAdmin(admin.ModelAdmin):
         'name',
         'price',
         'free_delivery',
+        'first_order_disc',
+        'overall_discount',
+        'monthly_treat',
+        'recipe_book',
+        'price',
     )
