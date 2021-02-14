@@ -18,10 +18,10 @@
         {% for membership in memberships %}
             <div class="col-12 col-sm-6 col-md-4 mb-5 mb-md-0 {% if membership.name == user_membership %}border{% endif %}">
                 <!-- Membership Name -->
-                <h5 class="text-uppercase pt-5">The {{membership.name}} Membership</h5>
+                <h5 class="text-uppercase pt-5">The {{membership.name}} <br> Membership</h5>
                 <!-- Memberhsip image -->
                 <div style="height: 15rem;">
-                    <img src="{{ membership.image }}" alt="Bee logo for {{ membership.name}} Membership" style="height: 12rem;">
+                    <img src="{{ membership.image.url }}" alt="Bee logo for {{ membership.name}} Membership" style="height: 12rem;">
                 </div>
                 <!-- If membership offers free delivery, display No if None -->
                 <div>
@@ -70,6 +70,11 @@
                         {% endif %}
                     </p>
                 </div>
+                <form action="" method="POST" class="pb-5">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ membership.name }}" name="membership_type">
+                        <button class="button button-green">Treat yourself</button>
+                    </form>
             </div>
         {% endfor %}
     </div>
