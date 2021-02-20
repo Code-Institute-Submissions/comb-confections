@@ -7,7 +7,38 @@ body {
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
-    font-family: 'Lato';
+    font-family: 'Playfair Display';
+}
+
+.nav-bg {
+    background-color: honeydew;
+    opacity: 90%;
+}
+
+.search:hover {
+    background-color: black;
+    color: goldenrod;
+}
+
+.searchbar:hover {
+    transform: scale(1.2);
+    background-color: black;
+    color: goldenrod;
+}
+
+.menu-icon {
+    font-size: 30px;
+}
+
+.menu-icon:hover {
+    color: goldenrod;
+    font-size: large;
+}
+
+.nav-edit a:hover{
+    background-color: goldenrod;
+    transform-origin: bottom center;
+    transition: all 1s ease;}
 }
 
 /* from Bulma */
@@ -21,16 +52,33 @@ body {
 
 .logo-font {
     text-transform: uppercase;
+    font-size: 20px;
 }
 
 .main-logo-link {
     width: fit-content;
 }
 
-.shop-now-button {
+.logo {
+    height: 100px;
+    width: 100px;
+}
+
+.treat-yourself-button a{
     background: black;
     color: white;
+    text-decoration: none;
     min-width: 260px;
+    border-color: goldenrod;
+}
+
+.treat-yourself-button a:hover {
+    background: goldenrod;
+    color: white;
+    text-decoration: none;
+    min-width: 260px;
+    border-style: 1px 1px 1px 1px solid black;
+    transform: scale(1.2);
 }
 
 .btn-black {
@@ -39,7 +87,7 @@ body {
 }
 
 .btn-outline-black {
-    background: white;
+    background: goldenrod;
     color: black !important; /* use important to override link colors for <a> elements */
     border: 1px solid black;
 }
@@ -47,7 +95,7 @@ body {
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
-    background: black;
+    background: gold;
     color: white !important;
 }
 
@@ -57,7 +105,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
+    background: goldenrod;
     color: white;
 }
 
@@ -71,6 +119,14 @@ body {
 
 .bg-black {
     background: #000 !important;
+}
+
+.welcome-text {
+    margin-top: 10%;
+    text-transform: uppercase;
+    background-color: #cfc5c4;
+    text-align: center;
+    opacity: 60%;
 }
 
 .overlay {
