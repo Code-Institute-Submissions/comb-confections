@@ -12,71 +12,95 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container text-center">
-    <h2 class="font-heading heading-green d-inline-block p-1 mt-5 mb-3">Memberships</h2>
+    <h2 class="d-inline-block p-1 mt-5 mb-3">Membership Checkout</h2>
     <div class="row text-center mb-5 pt-5">
-        <!-- Displays all memberships -->
-        {% for membership in memberships %}
-            <div class="col-12 col-sm-6 col-md-4 mb-5 mb-md-0 {% if membership.name == user_membership %}border{% endif %}">
-                <!-- Membership Name -->
-                <h5 class="text-uppercase pt-5">The {{membership.name}} <br> Membership</h5>
-                <!-- Memberhsip image -->
-                <div style="height: 15rem;">
-                    <img src="{{ membership.image.url }}" alt="Bee logo for {{ membership.name}} Membership" style="height: 12rem;">
-                </div>
-                <!-- If membership offers free delivery, display No if None -->
+        <div class="col-12">
+            <!-- Membership Name -->
+            <h5 class="text-uppercase pt-5">You've chosen the <br><span class="gold-text">{{membership.name}}</span><br> Membership</h5>
+            <!-- Price, display free if None -->
+            <div>
+                <p>
+                    {% if membership.price %}
+                        £{{ membership.price }}
+                    {% endif %}
+                    per month
+                </p>
+            </div>
+            <!-- Memberhsip image -->
+            <div style="height: 15rem;">
+                <img src="{{ membership.image.url }}" alt="Bee logo for {{ membership.name}} Membership" style="height: 12rem;">
+            </div>
+            <div class="col-12 change-mem">
+                <h4 class="text-uppercase">Change Membership</h4>
+                <!-- membership types forms -->
+                <form action="{% url 'membership_checkout' %}" method="GET" class="text-center">
+                    <select class="form-select" aria-label="Default select example" name="membership-new">
+                        <!-- Loop through membership types, display selected membership -->
+                        {% for m in types_of_memberships %}
+                            {% if m.name == membership.name %}
+                                <option selected value="{{ m.name }}">{{ m.name }}</option>
+                            {% else %}
+                                <option value="{{ m.name }}">{{ m.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <button class="text-upppercase btn-outline-black">Change</button>
+                </form>
+            </div>
+            <!--Member Benefits-->
+            <div class="border m-auto p-3 col-md-6">
+                <h3 class="text-upppercase">What you get.</h3>
+                <!-- Free Delivery -->
+                <br>
                 <div>
                     <p class="mb-0">Free Delivery</p>
                     {% if membership.free_delivery == 'Y' %}
-                        <p class="text-danger">Yes</p>
+                        <p class="gold-text">Yes</p>
                     {% else %}
-                        <p class="text-secondary">No</p>
+                        <p class="gold-text">No</p>
                     {% endif %}
                 </div>
                 <!-- First Order Discount in % -->
                 <div>
                     <p class="mb-0">First Order Discount</p>
-                    <p class="text-danger">{{ membership.first_order_disc }}%</p>
+                    <p class="gold-text">{{ membership.first_order_disc }}%</p>
                 </div>
                 <!-- Overall discount in %, display No if None -->
                 <div>
                     <p class="mb-0">Overall Discount</p>
                     {% if membership.overall_discount %}
-                        <p class="text-danger">{{ membership.overall_discount }}%</p>
+                        <p class="gold-text">{{ membership.overall_discount }}%</p>
                     {% else %}
-                        <p class="text-secondary">No</p>
+                        <p class="gold-text">No</p>
                     {% endif %}
                 </div>
                 <!-- Monthly Treat package -->
                 <div>
                     <p class="mb-0">Monthly Treat</p>
-                    <p class="text-danger">{{ membership.monthly_treat }}</p>
+                    <p class="gold-text">{{ membership.monthly_treat }}</p>
                 </div>
                 <!-- Recipe book included? -->
                 <div>
                     <p class="mb-0">Monthly Recipe Book?</p>
                     {% if membership.recipe_book == 'Y' %}
-                        <p class="text-danger">Yes</p>
+                        <p class="gold-text">Yes</p>
                     {% else %}
-                        <p class="text-secondary">No</p>
+                        <p class="gold-text">No</p>
                     {% endif %}
                 </div>
-                <!-- Price, display free if None -->
-                <div>
-                    <p class="fs-4 txt-green">
-                        {% if membership.price %}
-                            € {{ membership.price }}
-                        {% else %}
-                            free
-                        {% endif %}
-                    </p>
-                </div>
-                <form action="{% url 'membership_type' %}" method="POST" class="pb-5">
-                        {% csrf_token %}
-                        <input type="hidden" value="{{ membership.name }}" name="membership_type">
-                        <button class="button button-green">Treat yourself</button>
-                    </form>
             </div>
-        {% endfor %}
+            <!-- Payment container -->
+            <div class="row mt-5">
+                <div class="col-12 col-md-6 m-auto border p-3 text-center">
+                    <h4 class="text-uppercase">Payment</h4>
+                    <p>Total cost: <span>£{{ membership.price }}</span></p>
+                    <div class="text-center my-3">
+                        <button type="submit" class="btn-black" id="submitBtn">Confirm</button>
+                    </div>
+                    <p class="text-end mb-0"><small>This amount will be charged on your card monthly</small></p>
+               </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -383,3 +383,16 @@ input[name='q']::placeholder {
         padding: .25rem .5rem !important;
     }
 }
+
+.gold-text {
+    color: goldenrod;
+}
+
+.change-mem {
+    margin-top: 4%;
+    margin-bottom: 5%
+}
+
+.border  {
+    border-style: 2px 2px 2px 2px black solid;
+}

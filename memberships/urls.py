@@ -7,9 +7,9 @@ urlpatterns = [
     path('membership_type/', views.membership_type,
          name='membership_type'),
     path('membership_checkout/', views.membership_checkout,
-          name="membership_checkout"),
+         name="membership_checkout"),
     path('user_membership/', views.user_membership_view,
-          name="user_membership"),
+         name="user_membership"),
     path('membership_change/', views.membership_change,
          name="membership_change"),
 ]
