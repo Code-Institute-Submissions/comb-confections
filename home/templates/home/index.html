@@ -12,12 +12,16 @@
 {% block content %}
     <div class="container h-100">
         <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 welcome-text text-black">
+            <div class="col-7 col-md-6 welcome-text my-auto">
+                <h1 class="display-4 welcome-text center-align text-black">
                     Welcome to the Hive!
                 </h1>
-                <div class="my-5 treat-yourself-button">
-                    <a href="{% url 'products' %}" class=" btn-lg rounded-0 text-uppercase py-3">Treat Yourself</a>
+                <p class="welcome-text-para center-align">
+                    We have the finest <span>Honeycomb Fudge, Cakes</span> and other <span>Sweet Treats</span> Available!
+                </p>
+                <div class="col-12 my-5 center-align treat-yourself-button">
+                    <a href="{% url 'memberships' %}" class=" btn-lg text-uppercase py-3">Join Us!</a>
+                    <a href="{% url 'products' %}" class=" btn-lg text-uppercase py-3">Treat Yourself!</a>
                 </div>
             </div>
         </div>

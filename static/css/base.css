@@ -70,6 +70,8 @@ body {
     text-decoration: none;
     min-width: 260px;
     border-color: goldenrod;
+    border-radius: 8px 8px 8px 8px;
+    padding-right: 3%;
 }
 
 .treat-yourself-button a:hover {
@@ -78,7 +80,6 @@ body {
     text-decoration: none;
     min-width: 260px;
     border-style: 1px 1px 1px 1px solid black;
-    transform: scale(1.2);
 }
 
 .btn-black {
@@ -122,11 +123,18 @@ body {
 }
 
 .welcome-text {
-    margin-top: 10%;
+    margin-top: 8%;
     text-transform: uppercase;
     background-color: #cfc5c4;
     text-align: center;
-    opacity: 60%;
+}
+
+.welcome-text-para span {
+    text-transform: uppercase;
+    background-color: #cfc5c4;
+    text-align: center;
+    opacity: 90%;
+    color: goldenrod;
 }
 
 .overlay {

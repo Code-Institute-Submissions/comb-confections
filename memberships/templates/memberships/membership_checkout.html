@@ -117,3 +117,8 @@
     </div>
 </div>
 {% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'memberships/js/main.js' %}"></script>
+{% endblock %}

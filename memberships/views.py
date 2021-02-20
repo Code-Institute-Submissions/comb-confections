@@ -15,7 +15,7 @@ from django.contrib.auth.models import User
 
 def memberships(request):
     """
-    A view to return the memberships page
+    Membership Page
     """
 
     # Get all membership model entries
@@ -43,8 +43,7 @@ def memberships(request):
 
 def membership_type(request):
     """
-    Capture membership type selected by user, store it in
-    session variable and redirect user to the signup page
+    Capture membership type selected by user.
     """
 
     membership_type = request.POST.get('membership_type')
@@ -58,8 +57,8 @@ def membership_type(request):
 @login_required
 def membership_checkout(request):
     """
-    Retrieve user selected membership, display
-    benefits, and allow user to change membership
+    Retrieve selected membership option, display
+    benefits, and allow user to change membership.
     """
     # Retrieve data for all memberships
     types_of_memberships = Membership.objects.all()
@@ -67,6 +66,7 @@ def membership_checkout(request):
     profile = UserProfile.objects.get(user=request.user)
     if profile.membership:
         return redirect(reverse('membership_change'))
+
     if request.GET.get('membership-new'):
         membership_type = request.GET.get('membership-new')
         request.session['membership'] = membership_type
@@ -112,8 +112,7 @@ def user_membership_view(request):
 @login_required
 def membership_change(request):
     """
-    Handles membership change and adding selected memebrship
-    to the session
+    Handles membership change
     """
     profile = UserProfile.objects.get(user=request.user)
     if not profile.membership:
@@ -139,18 +138,17 @@ def membership_change(request):
 @login_required
 def membership_update(request):
     """
-    Update user's membership in the stripe system
-    and our database too
+    Update user's membership
     """
 
     if not UserProfile.objects.get(user=request.user).membership:
         return redirect(reverse('memberships'))
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    # user's chosen membership
+    # user's membership
     membership = request.session['membership']
 
-    # Asign correct price keys to the paid memberships
+    # Asign correct prices to the paid memberships
     if membership == 'Queen_Bee':
         price = settings.STRIPE_PRICE_ID_QUEEN_BEE
     elif membership == 'Supreme Bee':
@@ -194,7 +192,7 @@ def membership_update(request):
 @csrf_exempt
 def stripe_config(request):
     """
-    Handles AJAX requests coming from stripe_sub.js
+    Handles AJAX requests coming from main.js
     """
     if request.method == 'GET':
         # add public key in a dict that will be retrieved by JS
@@ -215,7 +213,7 @@ def create_checkout_session(request):
             price = settings.STRIPE_PRICE_ID_QUEEN_BEE
         elif membership == 'Drone_Bee':
             price = settings.STRIPE_PRICE_ID_DRONE_BEE
-        else:
+        elif membership == 'Worker_Bee':
             price = settings.STRIPE_PRICE_ID_WORKER_BEE
 
         try:
@@ -248,7 +246,23 @@ def create_checkout_session(request):
 
 @login_required
 def success(request):
-    return render(request, 'membership_success.html')
+
+    profile = get_object_or_404(UserProfile, user=request.user)
+
+    if not profile.membership:
+        membership_type_value = request.session['membership']
+        membership_type = Membership.objects.get(name=membership_type_value)
+        profile.membership = membership_type
+        profile.save()
+
+    membership = get_object_or_404(UserProfile, user=request.user).membership.name
+
+    # Add a success message
+    messages.success(request, 'Congrats!! You successfully'
+                              ' subscribed to the '
+                              f'{membership} membership!')
+    # Redirect the user to profiles page
+    return redirect(reverse('profile'))
 
 
 @csrf_exempt
@@ -286,6 +300,8 @@ def stripe_webhook(request):
             stripeCustomerId=stripe_customer_id,
             stripeSubscriptionId=stripe_subscription_id,
         )
-        print(user.username + ' just subscribed.')
+        profile = get_object_or_404(UserProfile, user=user)
+        profile.membership = membership_type
+        profile.save()
 
     return HttpResponse(status=200)
