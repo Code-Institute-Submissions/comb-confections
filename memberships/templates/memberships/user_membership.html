@@ -70,7 +70,7 @@
                         {% endif %}
                     </p>
                 </div>
-                <form action="{% url 'membership_type' %}" method="POST" class="pb-5">
+                <form action="{% url 'membership_type' $}" method="POST" class="pb-5">
                         {% csrf_token %}
                         <input type="hidden" value="{{ membership.name }}" name="membership_type">
                         <button class="button button-green">Treat yourself</button>
