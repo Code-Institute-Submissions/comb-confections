@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Membership
+from memberships.models import Membership, StripeCustomer
 
 
 @admin.register(Membership)
@@ -14,3 +14,6 @@ class MembershipAdmin(admin.ModelAdmin):
         'recipe_book',
         'price',
     )
+
+
+admin.site.register(StripeCustomer)

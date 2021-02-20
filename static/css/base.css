@@ -38,7 +38,7 @@ body {
 .nav-edit a:hover{
     background-color: goldenrod;
     transform-origin: bottom center;
-    transition: all 1s ease;}
+    transition: all 1s ease;
 }
 
 /* from Bulma */

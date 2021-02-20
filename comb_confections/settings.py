@@ -79,7 +79,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # required by allauth
+                'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
@@ -178,4 +178,7 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+STRIPE_PRICE_ID_QUEEN_BEE = os.getenv('STRIPE_PRICE_ID_QUEEN_BEE', '')
+STRIPE_PRICE_ID_DRONE_BEE = os.getenv('STRIPE_PRICE_ID_DRONE_BEE', '')
+STRIPE_PRICE_ID_WORKER_BEE = os.getenv('STRIPE_PRICE_ID_WORKER_BEE', '')
 DEFAULT_FROM_EMAIL = 'admin@combconfections.co.uk'
