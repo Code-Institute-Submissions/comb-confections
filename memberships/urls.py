@@ -16,7 +16,7 @@ urlpatterns = [
          name="membership_update"),
     path('config/', views.stripe_config),
     path('create-checkout-session/', views.create_checkout_session),
-    path('success/', views.success),
+    path('membership_success/', views.membership_success),
     path('webhook/', views.stripe_webhook),
 
 ]

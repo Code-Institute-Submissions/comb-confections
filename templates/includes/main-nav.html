@@ -1,15 +1,15 @@
-<div class="collapse navbar-collapse bg-black" id="main-nav">
+<div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item nav-edit dropdown">
-            <a class="logo-font font-weight-bold nav-link text-white mr-5" href="{% url 'home' %}" id="specials-link" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font nav-link nav-text nav-text mr-5" href="{% url 'home' %}" id="specials-link" aria-haspopup="true" aria-expanded="false">
                 Home
             </a>
         </li>
         <li class="nav-item nav-edit dropdown">
-            <a class="logo-font font-weight-bold nav-link text-white mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link nav-text mr-5" href="#" id="treats-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Treats
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+            <div class="dropdown-menu border-0 nav-text" aria-labelledby="treats-link">
                 <a href="{% url 'products' %}?category=fudge" class="dropdown-item">Fudge</a>
                 <a href="{% url 'products' %}?category=cakes" class="dropdown-item">Cakes</a>
                 <a href="{% url 'products' %}?category=sweet_treats" class="dropdown-item">Sweet Treats</a>
@@ -17,7 +17,7 @@
             </div>
         </li>
         <li class="nav-item nav-edit dropdown">
-            <a class="logo-font font-weight-bold nav-link text-white" href="{% url 'memberships' %}" id="membership-link" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link nav-text" href="{% url 'memberships' %}" id="membership-link" aria-haspopup="true" aria-expanded="false">
                 Join the Hive
             </a>
         </li>

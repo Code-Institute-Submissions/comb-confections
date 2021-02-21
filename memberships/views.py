@@ -245,7 +245,7 @@ def create_checkout_session(request):
 
 
 @login_required
-def success(request):
+def membership_success(request):
 
     profile = get_object_or_404(UserProfile, user=request.user)
 
