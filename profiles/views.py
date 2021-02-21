@@ -14,8 +14,7 @@ def profile(request):
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if not profile.membership:
-        messages.error(request, "You haven't subscribed to a membership yet. "
-                                " Choose one and join the Prickly fam")
+        messages.error(request, "You haven't subscribed to a membership yet.")
         return redirect(reverse('memberships'))
 
     membership = get_object_or_404(Membership, name=profile.membership)

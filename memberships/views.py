@@ -221,7 +221,7 @@ def create_checkout_session(request):
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=(request.user.id if
                                      request.user.is_authenticated else None),
-                # link to checkout success page if paymenr successful
+                # link to checkout success page if payment is successful
                 success_url=(
                     domain_url + 'success?session_id={CHECKOUT_SESSION_ID}'),
                 #  Link to a page if user cancels the payment in checkout
@@ -255,7 +255,8 @@ def success(request):
         profile.membership = membership_type
         profile.save()
 
-    membership = get_object_or_404(UserProfile, user=request.user).membership.name
+    membership = (
+        get_object_or_404(UserProfile, user=request.user).membership.name)
 
     # Add a success message
     messages.success(request, 'Congrats!! You successfully'

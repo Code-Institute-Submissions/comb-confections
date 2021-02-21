@@ -12,11 +12,11 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container text-center">
-    <h2 class="d-inline-block p-1 mt-5 mb-3">Membership Checkout</h2>
+    <h2 class="d-inline-block p-1 mt-5 mb-3">Your Membership Details</h2>
     <div class="row text-center mb-5 pt-5">
         <div class="col-12">
             <!-- Membership Name -->
-            <h5 class="text-uppercase pt-5">You've chosen the <br><span class="gold-text">{{membership.name}}</span><br> Membership</h5>
+            <h5 class="text-uppercase pt-5">You're a <br><span class="gold-text">{{membership.name}}</span><br></h5>
             <!-- Price, display free if None -->
             <div>
                 <p>
@@ -73,21 +73,7 @@
                 </div>
             </div>
             <div class="col-12 change-mem">
-                <h4 class="text-uppercase">Change Membership</h4>
-                <!-- membership types forms -->
-                <form action="{% url 'membership_checkout' %}" method="GET" class="text-center">
-                    <select class="form-select" aria-label="Default select example" name="membership-new">
-                        <!-- Loop through membership types, display selected membership -->
-                        {% for m in types_of_memberships %}
-                            {% if m.name == membership.name %}
-                                <option selected value="{{ m.name }}">{{ m.name }}</option>
-                            {% else %}
-                                <option value="{{ m.name }}">{{ m.name }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    <button class="text-upppercase btn-outline-black">Change</button>
-                </form>
+                <a href="{% url 'memberships' %}" class="btn-black">Change</a>
             </div>
         </div>
     </div>
