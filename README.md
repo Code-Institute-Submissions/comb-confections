@@ -1,45 +1,111 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<img src="media/cc-logo.jpg">
 
-Welcome jakefernihough,
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+# USER EXPERIENCE
 
-## Gitpod Reminders
+## User Stories
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### User
 
-`python3 -m http.server`
+#### Business Goals
 
-A blue button should appear to click: *Make Public*,
+- Connect the business to social media to feed in a larger audience
+- Outperform competitors by providing excellent services, products and support.
+- Update the products with new and exciting recipes.
+- Earn a profit by allowing anyone to purchase products
 
-Another blue button should appear to click: *Open Browser*.
+#### Common User Stories
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+i. I want to easily navigate the site so that I can find what I'm looking for.
 
-A blue button should appear to click: *Make Public*,
+ii. I want to be able to contact the company if I'm experiencing an issue.
 
-Another blue button should appear to click: *Open Browser*.
+iii. I want the website to be readable on all screen sizes.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### As a first time visitor
 
-## Updates Since The Instructional Video
+i. Understand what the website provides and whether I want to invest my
+time.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+ii. View and compare the memberships so that I can decide is any suits me
+before I subscribe.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+iii. Understand the benefits of becoming a member.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+iv. Easily find how to register/ subscribe to the site without it being too
+difficult to find.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+v. Be able to quickly register and start using the site so that I can have my
+account and receive the benefits.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+#### As a casual/ regular shopper I want to
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+i. Navigate to the product page to find what I want easily.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+ii. Filter products by category to find products faster.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+iii. Sort by price/ name to find products faster.
 
---------
+iv. See the price before I add it to my bag.
 
-Happy coding!
+v. Have a quick way of adding to the bag without having to go through extra steps.
+
+vi. Be able to see more details about the product before I submit to buying.
+
+vii. Search for an item anywhere on the site.
+
+viii. Select and edit the quantity of how many of the product I want to buy.
+
+ix. See my shopping cart before checkout so I can process any changes.
+
+x. See all charges before purchase so that I can review my orders and if it is
+suitable for my price range.
+
+xi. Add my details without too many steps, so I don’t get discouraged with a
+lengthy checkout system.
+
+xii. Secure my payment information so that I feel safe with using my card
+details.
+
+xiii. See an order confirmation and receive an email so I have proof of
+purchase.
+
+#### As a member
+i. Register an account easily.
+
+ii. Log in and out quickly and easily.
+
+iii. See my personal details so I can manage them at any time.
+
+iv. See my membership details and what my benefits include.
+
+v. Change the membership when I want so I have more control over my
+expenditure.
+
+vi. Cancel my paid membership without any hassle.
+
+vii. See my order history so I can have the confirmation details in one place.
+
+viii. Receive benefits as a member.
+
+ix. See the estimated delivery date for my order.
+
+#### As an Admin I want to
+
+i. Be able to add an item so I can update the products on the site.
+
+ii. Be able to edit and remove items so that I can customise items on the site
+and offer new deals/ products to the consumers.
+
+iii. Add/ Edit new memberships so that I can customize prices and benefits.
+
+iv. Have oversight of user data so that I can help with any issues/ queries.
+
+# SCOPE
+
+- Comb Confections is an e-commerce site.
+    - It allows users to Register/ Login to an account.
+    - Authorise payments for membership as well as single products.
+    - Shows categorised Products and Product Page.
+    - Has a Profile Page for members.
+

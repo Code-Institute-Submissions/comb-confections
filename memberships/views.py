@@ -269,7 +269,7 @@ def success(request):
 @csrf_exempt
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
+    endpoint_secret = settings.STRIPE_WH_SECRET_SUB
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
