@@ -16,14 +16,14 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container text-center">
-    <h2 class="d-inline-block p-1 mt-5 mb-3">Membership Checkout</h2>
+    <h2 class="d-inline-block p-1 mt-5">Membership Checkout</h2>
     <div class="row text-center mb-5 pt-5">
         <div class="col-12">
             <!-- Membership Name -->
-            <h5 class="text-uppercase pt-5">You've chosen the <br><span class="gold-text">{{membership.name}}</span><br> Membership</h5>
+            <h5 class="text-uppercase text-white">You've chosen the <br><span class="gold-text">{{membership.name}}</span><br> Membership</h5>
             <!-- Price, display free if None -->
             <div>
-                <p>
+                <p class="text-black">
                     {% if membership.price %}
                         £{{ membership.price }}
                     {% endif %}
@@ -35,7 +35,7 @@
                 <img src="{{ membership.image.url }}" alt="Bee logo for {{ membership.name}} Membership" style="height: 12rem;">
             </div>
             <div class="col-12 change-mem">
-                <h4 class="text-uppercase">Change Membership</h4>
+                <h4 class="text-uppercase mt-2 text-white">Change Membership</h4>
                 <!-- membership types forms -->
                 <form action="{% url 'membership_checkout' %}" method="GET" class="text-center">
                     <select class="form-select" aria-label="Default select example" name="membership-new">
@@ -53,11 +53,11 @@
             </div>
             <!--Member Benefits-->
             <div class="border m-auto p-3 col-md-6">
-                <h3 class="text-upppercase">What you get.</h3>
+                <h3 class="text-upppercase text-black">What you get.</h3>
                 <!-- Free Delivery -->
                 <br>
                 <div>
-                    <p class="mb-0">Free Delivery</p>
+                    <p class="mb-0 text-white">Free Delivery</p>
                     {% if membership.free_delivery == 'Y' %}
                         <p class="gold-text">Yes</p>
                     {% else %}
@@ -66,12 +66,12 @@
                 </div>
                 <!-- First Order Discount in % -->
                 <div>
-                    <p class="mb-0">First Order Discount</p>
+                    <p class="mb-0 text-white">First Order Discount</p>
                     <p class="gold-text">{{ membership.first_order_disc }}%</p>
                 </div>
                 <!-- Overall discount in %, display No if None -->
                 <div>
-                    <p class="mb-0">Overall Discount</p>
+                    <p class="mb-0 text-white">Overall Discount</p>
                     {% if membership.overall_discount %}
                         <p class="gold-text">{{ membership.overall_discount }}%</p>
                     {% else %}
@@ -80,12 +80,12 @@
                 </div>
                 <!-- Monthly Treat package -->
                 <div>
-                    <p class="mb-0">Monthly Treat</p>
+                    <p class="mb-0 text-white">Monthly Treat</p>
                     <p class="gold-text">{{ membership.monthly_treat }}</p>
                 </div>
                 <!-- Recipe book included? -->
                 <div>
-                    <p class="mb-0">Monthly Recipe Book?</p>
+                    <p class="mb-0 text-white">Monthly Recipe Book?</p>
                     {% if membership.recipe_book == 'Y' %}
                         <p class="gold-text">Yes</p>
                     {% else %}
@@ -96,8 +96,8 @@
             <!-- Payment container -->
             <div class="row mt-5">
                 <div class="col-12 col-md-6 m-auto border p-3 text-center">
-                    <h4 class="text-uppercase">Payment</h4>
-                    <p>Total cost: <span>£{{ membership.price }}</span></p>
+                    <h4 class="text-uppercase text-white">Payment</h4>
+                    <p class="text-white">Total cost: <span class="text-black">£{{ membership.price }}</span></p>
                     {% if change_membership %}
                 <p class="text-danger">This will cancel your current membership and subscribe you to the {{ membership.name }} plan.</p>
                 <div>
@@ -109,7 +109,7 @@
                     <div class="text-center my-3">
                         <button type="submit" class="btn-black" id="submitBtn">Treat Yourself</button>
                     </div>
-                    <p class="text-end mb-0"><small>This amount will be charged on your card monthly</small></p>
+                    <p class="text-end mb-0 text-white"><small>This amount will be charged on your card monthly</small></p>
                 </div>
                {% endif %}
             </div>

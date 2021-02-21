@@ -97,7 +97,7 @@ body {
 .btn-outline-black:hover,
 .btn-outline-black:active,
 .btn-outline-black:focus {
-    background: gold;
+    background: black;
     color: white !important;
 }
 
@@ -446,4 +446,8 @@ input[name='q']::placeholder {
 
 .lead {
     font-size: 30px;
+}
+
+.mem-bg {
+    background-color: goldenrod;
 }
