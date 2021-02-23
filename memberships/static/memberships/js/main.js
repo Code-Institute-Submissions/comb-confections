@@ -1,5 +1,5 @@
 // Get Stripe public key
-fetch("memberships/config/")
+fetch("/memberships/config/")
 // convert to JS object
 .then((result) => { return result.json(); })
 // Get data
