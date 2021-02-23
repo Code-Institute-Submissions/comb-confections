@@ -202,10 +202,12 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+    price = settings.STRIPE_PRICE_ID_QUEEN_BEE
+    stripe.api_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'GET':
 
-        domain_url = settings.DOMAIN_URL
+        domain_url = 'http://localhost:8000/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         membership = request.session['membership']
 
@@ -223,9 +225,10 @@ def create_checkout_session(request):
                                      request.user.is_authenticated else None),
                 # link to checkout success page if payment is successful
                 success_url=(
-                    domain_url + 'success?session_id={CHECKOUT_SESSION_ID}'),
+                    domain_url + (
+                        'membership_success?session_id={CHECKOUT_SESSION_ID}')),
                 #  Link to a page if user cancels the payment in checkout
-                cancel_url=domain_url + 'membership_checkout/',
+                cancel_url=domain_url + 'memberships/membership_checkout/',
                 # Define payment method to be a card
                 payment_method_types=['card'],
                 # Subscription model
