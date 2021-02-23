@@ -207,7 +207,8 @@ def create_checkout_session(request):
 
     if request.method == 'GET':
 
-        domain_url = 'http://localhost:8000/'
+        domain_url = (
+            'https://f474b91f-1d9f-4350-ab85-ee68d90ad8a1.ws-eu03.gitpod.io/')
         stripe.api_key = settings.STRIPE_SECRET_KEY
         membership = request.session['membership']
 
@@ -226,7 +227,7 @@ def create_checkout_session(request):
                 # link to checkout success page if payment is successful
                 success_url=(
                     domain_url + (
-                        'membership_success?session_id={CHECKOUT_SESSION_ID}')),
+                        'memberships/membership_success?session_id={CHECKOUT_SESSION_ID}')),
                 #  Link to a page if user cancels the payment in checkout
                 cancel_url=domain_url + 'memberships/membership_checkout/',
                 # Define payment method to be a card
