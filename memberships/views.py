@@ -155,6 +155,8 @@ def membership_update(request):
         price = settings.STRIPE_PRICE_ID_DRONE_BEE
     elif membership == 'Worker_Bee':
         price = settings.STRIPE_PRICE_ID_WORKER_BEE
+    else:
+        price = settings.STRIPE_PRICE_ID_BEEHIVE
 
     # Check if the user already exists in stripe system and
     # our database
@@ -207,7 +209,7 @@ def create_checkout_session(request):
 
     if request.method == 'GET':
 
-        domain_url = 'https://f474b91f-1d9f-4350-ab85-ee68d90ad8a1.ws-eu03.gitpod.io/'
+        domain_url = 'https://8000-f474b91f-1d9f-4350-ab85-ee68d90ad8a1.ws-eu03.gitpod.io/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         membership = request.session['membership']
 
@@ -217,6 +219,8 @@ def create_checkout_session(request):
             price = settings.STRIPE_PRICE_ID_DRONE_BEE
         elif membership == 'Worker_Bee':
             price = settings.STRIPE_PRICE_ID_WORKER_BEE
+        else:
+            price = settings.STRIPE_PRICE_ID_BEEHIVE
 
         try:
             # Create a Checkout Session
@@ -224,11 +228,9 @@ def create_checkout_session(request):
                 client_reference_id=(request.user.id if
                                      request.user.is_authenticated else None),
                 # link to checkout success page if payment is successful
-                # success_url=(
-                #     domain_url + (
-                #         'memberships/membership_success?session_id={CHECKOUT_SESSION_ID}')),
                 success_url=(
-                    domain_url + 'memberships/membership_success/'),
+                    domain_url + (
+                        'memberships/membership_success?session_id={CHECKOUT_SESSION_ID}')),
                 #  Link to a page if user cancels the payment in checkout
                 cancel_url=domain_url + 'memberships/membership_checkout/',
                 # Define payment method to be a card
@@ -251,8 +253,6 @@ def create_checkout_session(request):
 
 @login_required
 def membership_success(request):
-
-    session_id = request.GET.get("session_id", "")
 
     profile = get_object_or_404(UserProfile, user=request.user)
 

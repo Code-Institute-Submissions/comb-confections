@@ -25,10 +25,12 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h4>Your Membership</h4>
-                <p>'The {{ membership.name }} Membership</p>
-                <p>£ {{ membership.price }}</p>
-                <a href="{% url 'user_membership' %}" class="button button-pink">More</a>
+            {% if membership.name == 'Beehive' %}
+                <p>'The {{ membership.name }} Membership - free</p>
+            {% else %}
+                <p>'The {{ membership.name }} Membership - £ {{ membership.price }}/pm</p>
+            {% endif %}
+                <a href="{% url 'user_membership' %}" class="button">More</a>
             </div>
         </div>
         <div class="row">
