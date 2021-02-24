@@ -224,9 +224,11 @@ def create_checkout_session(request):
                 client_reference_id=(request.user.id if
                                      request.user.is_authenticated else None),
                 # link to checkout success page if payment is successful
+                # success_url=(
+                #     domain_url + (
+                #         'memberships/membership_success?session_id={CHECKOUT_SESSION_ID}')),
                 success_url=(
-                    domain_url + (
-                        'memberships/membership_success?session_id={CHECKOUT_SESSION_ID}')),
+                    domain_url + 'memberships/membership_success/'),
                 #  Link to a page if user cancels the payment in checkout
                 cancel_url=domain_url + 'memberships/membership_checkout/',
                 # Define payment method to be a card
@@ -250,6 +252,8 @@ def create_checkout_session(request):
 @login_required
 def membership_success(request):
 
+    session_id = request.GET.get("session_id", "")
+
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if not profile.membership:
@@ -272,7 +276,7 @@ def membership_success(request):
 @csrf_exempt
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    endpoint_secret = settings.STRIPE_WH_SECRET_SUB
+    endpoint_secret = settings.STRIPE_WH_SECRET
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
@@ -296,6 +300,11 @@ def stripe_webhook(request):
         client_reference_id = session.get('client_reference_id')
         stripe_customer_id = session.get('customer')
         stripe_subscription_id = session.get('subscription')
+
+        total = session.get('amount_total')
+        total_num = round(total / 100, 2)
+        # get membership type based on the price
+        membership_type = get_object_or_404(Membership, price=total_num)
 
         # Get the user and create a new StripeCustomer
         user = User.objects.get(id=client_reference_id)
