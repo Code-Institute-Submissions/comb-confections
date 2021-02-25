@@ -64,19 +64,33 @@
                         <p class="gold-text">No</p>
                     {% endif %}
                 </div>
-                <!-- Price, display free if None -->
+                <!-- Price -->
                 <div>
                     <p class="gold-text">
                         {% if membership.price %}
-                            € {{ membership.price }}
+                            £ {{ membership.price }}
+                        {% else %}
+                            free
                         {% endif %}
                     </p>
                 </div>
+                {% if request.user.is_authenticated and user_membership %}
+                    <form action="{% url 'membership_change' %}" method="POST" class="pb-5">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ membership.name }}" name="membership_type">
+                        {% if membership.name == user_membership %}
+                            <button class="btn-outline-black" disabled>Joined</button>
+                        {% else %}
+                            <button class="btn-black">Change</button>
+                        {% endif %}
+                    </form>
+                {% else %}
                 <form action="{% url 'membership_type' %}" method="POST" class="pb-5">
                     {% csrf_token %}
                     <input type="hidden" value="{{ membership.name }}" name="membership_type">
                     <button class="btn-outline-black">Treat Yourself</button>
                  </form>
+                 {% endif %}
             </div>
         {% endfor %}
     </div>

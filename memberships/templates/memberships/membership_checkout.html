@@ -99,19 +99,19 @@
                     <h4 class="text-uppercase text-white">Payment</h4>
                     <p class="text-white">Total cost: <span class="text-black">£{{ membership.price }}</span></p>
                     {% if change_membership %}
-                <p class="text-danger">This will cancel your current membership and subscribe you to the {{ membership.name }} plan.</p>
-                <div>
-                    <a class="btn-black" href="{% url 'products' %}">Cancel</a>
-                    <a href="{% url 'membership_update' %}" class="btn-black">Confirm</a>
-                </div>
-            <!-- If user has selected other memberships as his first paid memebrship, re-direct to the checkout page -->
-                {% else %}
+                    <p class="text-danger">This will cancel your current membership and subscribe you to the {{ membership.name }} plan.</p>
+                    <div>
+                        <a class="btn-black" href="{% url 'products' %}">Cancel</a>
+                        <a href="{% url 'membership_update' %}" class="btn-black">Confirm</a>
+                    </div>
+                    <!-- If user has selected other memberships as his first paid memebrship, re-direct to the checkout page -->
+                    {% else %}
                     <div class="text-center my-3">
                         <button type="submit" class="btn-black" id="submitBtn">Treat Yourself</button>
                     </div>
-                    <p class="text-end mb-0 text-white"><small>This amount will be charged on your card monthly</small></p>
-                </div>
-               {% endif %}
+                        <p class="text-end mb-0 text-white"><small>This amount will be charged on your card monthly</small></p>
+                    {% endif %}
+                </div> 
             </div>
         </div>
     </div>
