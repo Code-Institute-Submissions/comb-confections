@@ -14,13 +14,11 @@ fetch("/memberships/config/")
    fetch("/memberships/create-checkout-session/")
      .then((result) => { return result.json(); })
      .then((data) => {
-         alert(1);
        console.log(data);
        // Redirect to seccure Checkout form hosted by Stripe
        return stripe.redirectToCheckout({sessionId: data.sessionId})
      })
      .then((res) => {
-         alert(2);
        console.log(res);
      });
    });

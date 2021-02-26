@@ -140,8 +140,9 @@ def membership_update(request):
     """
     Update user's membership
     """
-
+    print("ENTERING UPDATE FUNCTION")
     if not UserProfile.objects.get(user=request.user).membership:
+        print("NO MEMBERSHIP")
         return redirect(reverse('memberships'))
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -161,9 +162,12 @@ def membership_update(request):
     # Check if the user already exists in stripe system and
     # our database
     try:
+        print("ENTERING TRY BLOCK")
         stripe_customer = StripeCustomer.objects.get(user=request.user)
+        print("GOT CUSTOMER")
         subscription = stripe.Subscription.retrieve(
             stripe_customer.stripeSubscriptionId)
+        print("FOUND SUBSCRIPTION")
         # Update existing membership with a new one
         stripe.Subscription.modify(
             subscription.id,
@@ -174,6 +178,7 @@ def membership_update(request):
                 'price': price,
             }]
         )
+        print("MODIFIED SUBSCRIPTION")
 
         # Attach new membership to the user's profile
         membership_type = get_object_or_404(Membership, name=membership)
@@ -184,11 +189,15 @@ def membership_update(request):
         messages.success(request, 'Congrats!! You successfully changed '
                                   'to the f{membership} membership!')
         # Redirect the user to profiles page
+        print("SHOULD REACH THIS")
         return redirect(reverse('profile'))
 
     # If user doesn't exist, return error
-    except StripeCustomer.DoesNotExist:
-        return messages.error(request, 'User does not exist')
+    except Exception as e:
+        messages.error(request, 'User does not exist')
+        return redirect('profile')
+
+    print("SHOULDN'T REACH THIS")
 
 
 @csrf_exempt

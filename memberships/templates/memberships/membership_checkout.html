@@ -93,6 +93,29 @@
                     {% endif %}
                 </div>
             </div>
+                <!-- if user is not changing the membership -->
+            {% if not change_membership %}
+                <!-- Allow user to change the selected membership before payment  -->
+                <div class="row mt-5">
+                    <div class="col-12 col-md-6 m-auto border p-3">
+                        <h4 class="text-uppercase">Change</h4>
+                        <!-- Form contains membership types -->
+                        <form action="{% url 'membership_checkout' %}" method="GET" class="text-center">
+                            <select class="form-select" aria-label="Default select example" name="membership-new">
+                                <!-- Loop through membership types, display selected membership -->
+                                {% for m in types_of_memberships %}
+                                    {% if m.name == membership.name %}
+                                        <option selected value="{{ m.name }}">{{ m.name }}</option>
+                                    {% else %}
+                                        <option value="{{ m.name }}">{{ m.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <button class="text-upppercase btn btn-sm rounded-0 mt-3">Update</button>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
             <!-- Payment container -->
             <div class="row mt-5">
                 <div class="col-12 col-md-6 m-auto border p-3 text-center">
