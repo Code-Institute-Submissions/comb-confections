@@ -1,5 +1,6 @@
 from django.contrib import admin
-from memberships.models import Membership, StripeCustomer
+from memberships.models import Membership
+from memberships.models import StripeCustomer
 
 
 @admin.register(Membership)

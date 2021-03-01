@@ -136,6 +136,23 @@ def membership_change(request):
 
 
 @login_required
+def cancel_membership(request):
+    if not UserProfile.objects.get(user=request.user).membership:
+        return redirect(reverse('memberships'))
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    # user's membership
+    membership = get_object_or_404(Membership, name=profile.membership)
+
+    try:
+        stripe.Subscription.delete(membership)
+    except Exception as e:
+        return JsonResponse({'error': (e.args[0])}, status =403)
+
+    return redirect("products")
+
+
+@login_required
 def membership_update(request):
     """
     Update user's membership
@@ -193,9 +210,8 @@ def membership_update(request):
         return redirect(reverse('profile'))
 
     # If user doesn't exist, return error
-    except Exception as e:
-        messages.error(request, 'User does not exist')
-        return redirect('profile')
+    except StripeCustomer.DoesNotExist:
+        return messages.error(request, 'User does not exist')
 
     print("SHOULDN'T REACH THIS")
 
@@ -214,6 +230,9 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     price = settings.STRIPE_PRICE_ID_QUEEN_BEE
+    price = settings.STRIPE_PRICE_ID_DRONE_BEE
+    price = settings.STRIPE_PRICE_ID_WORKER_BEE
+    price = settings.STRIPE_PRICE_ID_BEEHIVE
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'GET':
@@ -236,17 +255,13 @@ def create_checkout_session(request):
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=(request.user.id if
                                      request.user.is_authenticated else None),
-                # link to checkout success page if payment is successful
                 success_url=(
                     domain_url + (
                         'memberships/membership_success?session_id={CHECKOUT_SESSION_ID}')),
-                #  Link to a page if user cancels the payment in checkout
                 cancel_url=domain_url + 'memberships/membership_checkout/',
-                # Define payment method to be a card
                 payment_method_types=['card'],
                 # Subscription model
                 mode='subscription',
-                # Price and quantity of items
                 line_items=[
                     {
                         'price': price,

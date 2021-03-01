@@ -99,7 +99,7 @@ class OrderLineItem(models.Model):
             Order, null=False, blank=False,
             on_delete=models.CASCADE, related_name='lineitems'))
     product = (
-        models.ForeignKey(Product, null=False, blank=False, 
+        models.ForeignKey(Product, null=False, blank=False,
                           on_delete=models.CASCADE))
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
