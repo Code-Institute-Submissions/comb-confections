@@ -36,7 +36,8 @@ body {
 }
 
 .navbar-toggler-icon {
-    border-color: rgb(255,102,203)
+    border-color: white;
+    color: white;
 }
 
 .nav-edit a:hover{
@@ -388,6 +389,7 @@ input[name='q']::placeholder {
     .navbar-toggler {
         padding: .4rem .4rem;
         font-size: 1rem;
+        background-color: white;
     }
 
     .btn.btn-outline-black.rounded-0,

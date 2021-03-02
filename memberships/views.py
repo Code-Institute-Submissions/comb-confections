@@ -143,9 +143,11 @@ def cancel_membership(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     # user's membership
     membership = get_object_or_404(Membership, name=profile.membership)
+    profile = get_object_or_404(UserProfile, user=request.user)
+    profile.membership = membership
 
     try:
-        stripe.Subscription.delete(membership)
+        stripe.Subscription.delete(profile.membership)
     except Exception as e:
         return JsonResponse({'error': (e.args[0])}, status =403)
 
@@ -179,12 +181,9 @@ def membership_update(request):
     # Check if the user already exists in stripe system and
     # our database
     try:
-        print("ENTERING TRY BLOCK")
         stripe_customer = StripeCustomer.objects.get(user=request.user)
-        print("GOT CUSTOMER")
         subscription = stripe.Subscription.retrieve(
             stripe_customer.stripeSubscriptionId)
-        print("FOUND SUBSCRIPTION")
         # Update existing membership with a new one
         stripe.Subscription.modify(
             subscription.id,
@@ -195,7 +194,6 @@ def membership_update(request):
                 'price': price,
             }]
         )
-        print("MODIFIED SUBSCRIPTION")
 
         # Attach new membership to the user's profile
         membership_type = get_object_or_404(Membership, name=membership)
@@ -206,14 +204,11 @@ def membership_update(request):
         messages.success(request, 'Congrats!! You successfully changed '
                                   'to the f{membership} membership!')
         # Redirect the user to profiles page
-        print("SHOULD REACH THIS")
         return redirect(reverse('profile'))
 
     # If user doesn't exist, return error
     except StripeCustomer.DoesNotExist:
         return messages.error(request, 'User does not exist')
-
-    print("SHOULDN'T REACH THIS")
 
 
 @csrf_exempt
