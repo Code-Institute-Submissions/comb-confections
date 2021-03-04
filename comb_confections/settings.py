@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
-    'memberships',
     'profiles',
 
     # Other
@@ -178,9 +177,4 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
-STRIPE_PRICE_ID_QUEEN_BEE = os.getenv('STRIPE_PRICE_ID_QUEEN_BEE', '')
-STRIPE_PRICE_ID_DRONE_BEE = os.getenv('STRIPE_PRICE_ID_DRONE_BEE', '')
-STRIPE_PRICE_ID_WORKER_BEE = os.getenv('STRIPE_PRICE_ID_WORKER_BEE', '')
-STRIPE_PRICE_ID_BEEHIVE = os.getenv('STRIPE_PRICE_ID_BEEHIVE', '')
-DOMAIN_URL = os.getenv('DOMAIN_URL', '')
 DEFAULT_FROM_EMAIL = 'admin@combconfections.co.uk'
