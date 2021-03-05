@@ -28,7 +28,7 @@ SECRET_KEY = 'b8!e)&%8z@0&9ca3l2m=e_c$lym3w*q@dw0^$*zt3z9tdgbd7h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS'), '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['comb-confections.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -121,12 +121,17 @@ WSGI_APPLICATION = 'comb_confections.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
