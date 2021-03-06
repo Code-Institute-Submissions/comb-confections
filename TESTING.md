@@ -1,4 +1,22 @@
-# Testing - Comb Confections
+<img src="media/cc-logo.jpg">
+
+# <h1 align="center">Testing - Comb Confections</h1>
+
+<a href="https://comb-confections.herokuapp.com/">Live Website</a>
+
+<a href="https://github.com/jakefernihough/comb-confections">Github Repository</a>
+
+# Table of Contents
+
+1. [Functionailty](#functionailty)
+1. [Validators](#validators)
+    - [HTML5](#html5)
+    - [CSS](#css)
+    - [JavaScript](#javascript)
+    - [Python](#python)
+1. [Compatability](#compatability)
+1. [User Stories](#user-stories)
+1. [Bugs](#bugs)
 
 # Functionailty
 
@@ -71,7 +89,7 @@ Either option brings the user to the same Products page with items filtered to t
  a notification is displayed with all items in the cart and the page is refreshed.
 - Admin can edit | Delete products here.
 
-## Memberships Page
+## Memberships Page *No Longer Used
 
 - For a non-user, It will display the types of memberships with the image, title, benefits, price and 'Treat Yourself' Button.
 - Authorised users have the chance to Change their membership if required. Picking between the Free and the Paid subscription.
@@ -108,3 +126,201 @@ Either option brings the user to the same Products page with items filtered to t
 
 - Logged in user only can navigate to this page from the navbar by clicking on the 'My Membership' link or their profile page.
 - User sees their selected membership details and benefits and the 'Cancel Membership' button at the bottom.
+
+# Validators
+
+## [HTML5](#https://validator.w3.org/)
+- All pages passed. The only issues were the Doctypes being declared as well as the Python functions in the code.
+
+## [CSS3](https://jigsaw.w3.org/css-validator/)
+- All CSS files passed with no errors.
+
+## [JSHint](https://jshint.com/)
+- All JS files passed.
+    - Only warning was this 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+
+## [PEP8](http://pep8online.com/)
+- All Passed
+- I used [flake8](https://flake8.pycqa.org/en/latest/) installed on my Gitpod as a validator throughout the project.
+- A Few files that came built-in Django did not meet PEP8 requirements, However this was not written by myself, so left in to not break the database.
+
+
+# Usability
+- To test the ease of navigation, this website was shared with friends and family of different ages and different levels of computer/smart device knowledge. There were no issues identified regarding the simplicity of navigating the website.
+- The testers also verified that all functionality aspects are working as explained above and as expected.
+- Testers expressed that the design is easy to understand and navigate.
+
+# Compatability
+
+- After using [ami.responsive](#http://ami.responsivedesign.is/) and Chrome DevTools, the pages are responsive on all devices.
+- I used a Laptop screen, an Ipad and a Xiamoi Android to test out the responsiveness through this development.
+
+
+1. [User Stories](#user-stories)
+
+#### Common User Stories
+
+i. I want to easily navigate the site so that I can find what I'm looking for.
+    
+- User can easily find what they need through ease of navigation.
+
+ii. I want the website to be readable on all screen sizes.
+    
+- Passed responsiveness.
+
+#### As a first time visitor
+
+i. Understand what the website provides and whether I want to invest my
+time.
+
+- User know's exactly what is on offer from opening up page.
+
+ii. View and compare the memberships so that I can decide is any suits me
+before I subscribe.
+
+- No Longer an option on the site.
+
+iii. Understand the benefits of becoming a member.
+
+- No longer on the site.
+
+iv. Easily find how to register/ subscribe to the site without it being too
+difficult to find.
+
+- No Longer on the site
+
+v. Be able to quickly register and start using the site so that I can have my
+account and receive the benefits.
+
+- No longer on the site.
+
+[Back to Menu](#table-of-contents)
+
+#### As a casual/ regular shopper I want to
+
+i. Navigate to the product page to find what I want easily.
+
+- Easily navigational.
+
+ii. Filter products by category to find products faster.
+
+- Sorts through the products with ease
+
+iii. Sort by price/ name to find products faster.
+
+- Sorts through the products with ease
+
+iv. See the price before I add it to my bag.
+
+- Can see the prices well.
+
+v. Have a quick way of adding to the bag without having to go through extra steps.
+
+- Easy way to add products
+
+vi. Be able to see more details about the product before I submit to buying.
+
+- Back button to return to treats menu
+
+vii. Search for an item anywhere on the site.
+
+- Search Bar available
+
+viii. Select and edit the quantity of how many of the product I want to buy.
+
+- Can do that on Product Detail and Bag page.
+
+ix. See my shopping cart before checkout so I can process any changes.
+
+- Full order avaliable
+
+x. See all charges before purchase so that I can review my orders and if it is
+suitable for my price range.
+
+- Order details available in Bag and checkout
+
+xi. Add my details without too many steps, so I don’t get discouraged with a
+lengthy checkout system.
+
+- Quick and simple to use UX
+
+xii. See an order confirmation and receive an email so I have proof of
+purchase.
+
+- A message, an email and can find your order history on the profile.
+
+[Back to Menu](#table-of-contents)
+
+#### As a member
+i. Register an account easily.
+
+- Easy to register
+
+ii. Log in and out quickly and easily.
+
+- By going onto the My Hive section.
+
+iii. See my personal details so I can manage them at any time.
+
+- On My Hive section
+
+iv. See my membership details and what my benefits include.
+
+- No longer on site
+
+v. Change the membership when I want so I have more control over my
+expenditure.
+
+- No longer on site
+
+vi. Cancel my paid membership without any hassle.
+
+- No longer on site
+
+vii. See my order history so I can have the confirmation details in one place.
+
+- Available on Profile.
+
+viii. Receive benefits as a member.
+
+- No longer on site
+
+ix. See the estimated delivery date for my order.
+
+- No longer on site
+
+[Back to Menu](#table-of-contents)
+
+#### As an Admin I want to
+
+i. Be able to add an item so I can update the products on the site.
+
+- Can do it from treats page, product detail and through admin.
+
+ii. Be able to edit and remove items so that I can customise items on the site
+and offer new deals/ products to the consumers.
+
+- Can do it from treats page, product detail and through admin.
+
+iii. Add/ Edit new memberships so that I can customize prices and benefits.
+
+- No longer on site.
+
+iv. Have oversight of user data so that I can help with any issues/ queries.
+
+- Access to Django Admin
+
+[Back to Menu](#table-of-contents)
+
+1. [Bugs](#bugs)
+
+- When Loading Data and migrating my products to Heroku, the products did not sort into their correct categories, so had to be done manually through the Admin.
+
+- Spinning wheel when processing a payment does not show.
+
+- I had to delete the Membership App due to spending two weeks trying to get the ability to change memberships for a current subscriber.
+Unfortunately I took too much time trying to sort it with the Tutors, so had to delete it a few days before project submission. This is why the project is very basic.
+
+- Website does not load onto iamresponsive.
+
+[Back to Menu](#table-of-contents)
