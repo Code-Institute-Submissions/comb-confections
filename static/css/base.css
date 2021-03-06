@@ -496,3 +496,9 @@ input[name='q']::placeholder {
 .nav-text {
     color: white;
 }
+
+.fa-twitter,
+.fa-instagram,
+.fa-facebook-f {
+    color: #000;
+}
