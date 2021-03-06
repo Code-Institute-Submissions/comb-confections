@@ -1,7 +1,7 @@
 <img src="media/cc-logo.jpg">
 
 <a href="https://comb-confections.herokuapp.com/">Live Website</a>
-<a href="https://github.com/jakefernihough/comb-confections>Github Repository</a>
+<a href="https://github.com/jakefernihough/comb-confections">Github Repository</a>
 
 # About
 
