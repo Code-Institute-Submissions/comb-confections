@@ -88,7 +88,7 @@ body {
     color: white;
     text-decoration: none;
     min-width: 260px;
-    border-style: 1px 1px 1px 1px solid black;
+    border-style: 1px solid black;
 }
 
 .btn-black {
@@ -446,7 +446,7 @@ input[name='q']::placeholder {
 }
 
 .border  {
-    border-style: 2px 2px 2px 2px black solid;
+    border-style: 2px black solid;
 }
 
 .logo-font {

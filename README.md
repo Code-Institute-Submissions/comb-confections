@@ -1,5 +1,6 @@
 <img src="media/cc-logo.jpg">
 
+<a href="https://comb-confections.herokuapp.com/">Live Website</a>
 
 # USER EXPERIENCE
 
